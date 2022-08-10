@@ -1,12 +1,12 @@
 /*
  * Copyright 2008-2009 Mike Reedell / LuckyCatLabs.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,15 +16,14 @@
 
 package com.luckycatlabs.sunrisesunset.util;
 
-import static org.junit.Assert.assertTrue;
+import com.luckycatlabs.sunrisesunset.dto.Location;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.luckycatlabs.sunrisesunset.dto.Location;
+import static org.junit.Assert.assertTrue;
 
 public class BaseTestCase {
 
@@ -52,10 +51,9 @@ public class BaseTestCase {
 
     /**
      * +- one minute is good enough.
-     * 
-     * @param expectedTime
-     * @param actualTime
-     * @return
+     *
+     * @param expectedTime the expected time of this equal method
+     * @param actualTime   the actual time of this equal method
      */
     protected void assertTimeEquals(String expectedTime, String actualTime, String date) {
         int expectedMinutes = getMinutes(expectedTime);
@@ -72,10 +70,10 @@ public class BaseTestCase {
     }
 
     private int getMinutes(String timeString) {
-        String[] timeParts = timeString.split("\\:");
+        String[] timeParts = timeString.split(":");
         if (timeParts[0].equals("00")) {
             timeParts[0] = "24";
         }
-        return (60 * Integer.valueOf(timeParts[0])) + Integer.valueOf(timeParts[1]);
+        return (60 * Integer.parseInt(timeParts[0])) + Integer.parseInt(timeParts[1]);
     }
 }

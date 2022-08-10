@@ -1,12 +1,12 @@
 /*
  * Copyright 2008-2009 Mike Reedell / LuckyCatLabs.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,11 +16,7 @@
 
 package com.luckycatlabs.sunrisesunset.util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +26,7 @@ import java.util.List;
  */
 public class CSVTestDriver {
 
-    private File testDataDirectory;
+    private final File testDataDirectory;
 
     public CSVTestDriver(String testDataDirectoryName) {
         testDataDirectory = new File(testDataDirectoryName);
@@ -41,15 +37,15 @@ public class CSVTestDriver {
     }
 
     public List<String[]> getData(String testDataFileName) {
-        List<String[]> valueList = new ArrayList<String[]>();
+        List<String[]> valueList = new ArrayList<>();
         try {
-            FileReader csvFileReader = new FileReader(new File(testDataDirectory + "/" + testDataFileName));
+            FileReader csvFileReader = new FileReader(testDataDirectory + "/" + testDataFileName);
             LineNumberReader reader = new LineNumberReader(csvFileReader);
 
             String line;
             try {
                 while ((line = reader.readLine()) != null) {
-                    String[] datum = line.split("\\,");
+                    String[] datum = line.split(",");
                     valueList.add(datum);
                 }
             } catch (FileNotFoundException fnfe) {

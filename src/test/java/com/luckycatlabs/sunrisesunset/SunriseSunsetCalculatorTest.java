@@ -87,7 +87,7 @@ public class SunriseSunsetCalculatorTest extends BaseTestCase {
         SunriseSunsetCalculator calculator = new SunriseSunsetCalculator(loc, "GMT");
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2012, 4, 7);
+        calendar.set(2012, Calendar.MAY, 7);
 
         String officialSunriseForDate = calculator.getOfficialSunriseForDate(calendar);
         assertEquals("22:35", officialSunriseForDate);
@@ -118,7 +118,8 @@ public class SunriseSunsetCalculatorTest extends BaseTestCase {
         SunriseSunsetCalculator calculator = new SunriseSunsetCalculator(loc, "Asia/Kolkata");
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2014, 12, 15);
+        final int ofRangeMonth = 12;
+        calendar.set(2014, ofRangeMonth, 15);
 
         String officialSunriseForDate = calculator.getOfficialSunriseForDate(calendar);
         assertEquals("06:19", officialSunriseForDate);
